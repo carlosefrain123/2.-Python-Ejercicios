@@ -5,3 +5,6 @@ notas = [
     [19, 12, 15],   # Lucía
 ]
 nombres = ["María", "Pedro", "Lucía"]
+
+for i in range(len(notas)):
+    print(f'La nota de {nombres[i]} es: {notas[i][0]}')

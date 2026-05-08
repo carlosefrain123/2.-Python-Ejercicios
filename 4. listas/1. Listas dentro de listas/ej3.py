@@ -4,3 +4,5 @@ mascotas = [
     ["conejo", "hámster", "tortuga"],
     ["loro", "canario", "perico"]
 ]
+for i in range(len(mascotas)):
+    print(mascotas[i][0])

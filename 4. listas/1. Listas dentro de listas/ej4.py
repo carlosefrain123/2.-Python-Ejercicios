@@ -4,3 +4,6 @@ colores = [
     ["negro", "blanco", "gris"],
     ["rosa", "morado", "naranja"]
 ]
+for i in range(len(colores)):
+    for j in range(len(colores[i])):
+        print(colores[i][j])
