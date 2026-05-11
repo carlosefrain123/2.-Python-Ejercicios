@@ -11,3 +11,15 @@ edificio = [
     [[5, 6], [7, 8]],   # piso 1
     [[2, 1], [3, 2]]    # piso 2
 ]
+for i in range(len(edificio)):
+    conteo=0
+    total=0
+    """ print(edificio[i]) """
+    for j in range(len(edificio[i])):
+        """ print(edificio[i][j]) """
+        for k in range(len(edificio[i][j])):
+            """ print(edificio[i][j][k]) """
+            total+=edificio[i][j][k]
+    print(f"El piso {i}: suma = {total}")
+            
+            

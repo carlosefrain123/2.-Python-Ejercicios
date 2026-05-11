@@ -10,3 +10,8 @@ inventario = [
     ["leche", "queso"],
     ["arroz", "fideos", "quinua"]
 ]
+for i in range(len(inventario)):
+    conteo=0
+    for j in range(len(inventario[i])):
+        conteo+=1
+    print(f'fila: {i}, conteo: {conteo}')

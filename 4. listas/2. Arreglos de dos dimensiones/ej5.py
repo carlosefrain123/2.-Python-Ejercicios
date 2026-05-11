@@ -11,3 +11,12 @@ notas = [
     [19, 12, 15],   # Lucía
 ]
 nombres = ["María", "Pedro", "Lucía"]
+
+for i in range(len(notas)):
+    total=0
+    conteo=0
+    for j in range(len(notas[i])):
+        total+=notas[i][j]
+        conteo+=1
+    promedio=total/conteo
+    print(f'{nombres[i]}, tiene un promedio de: {round(promedio,1)}')
