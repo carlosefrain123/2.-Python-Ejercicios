@@ -39,25 +39,26 @@ while True:
         print("Error...")
         print(f"Detalles: {e}")
     else:
-        distancia_extra=0
-        if distancia<=10:
-            precio=5
-        else:
-            distancia_extra=distancia-10
-            precio=5*(distancia_extra*0.8)
-        print(f"***La distancia es: {distancia}")
-        print(f"**La distancia extra es: {distancia_extra}")
-        print(f"*El precio es: {precio}")
-        
-        opciones=int(input("\n¿Desea continuar? (1) Sí (2) No: "))
-        if opciones<1 or opciones>2:
-            print("La opción tiene que estar entre 1 y 2.")
+        precio=5
+        km_extra=0
+        if distancia>10:
+            km_extra=round(0.80*(distancia*0.8),2)
+        total=round(precio+km_extra,1)
+        print(f"Distancia: {distancia} Km")
+        print(f"Costo de km extra: S/{km_extra}")
+        print(f"El total es: S/. {total}")
+        while True:
+            try:
+                opciones=int(input("¿Desea continuar? (1) Sí / (2) No: "))
+                if opciones<1 or opciones>2:
+                    raise ValueError
+                break
+            except ValueError:
+                print("Las opciones tiene que ser 1 o 2.")
+        if opciones!=1:
             break
-        if opciones==1:
-            continue
-        else:
-            break
-        
+    finally:
+        print("Ejecución Terminada.")
         
     
     

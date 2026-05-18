@@ -40,15 +40,22 @@ while True:
     except ValueError:
         print("No tiene que ser texto.")
     except Exception as e:
-        print("Error...")
         print(f"Detalle: {e}")
     else:
-        if ((promedio>=4.5 and promedio<=5) and proyectos>=1) :
+        if (promedio>=4.5 and promedio<=5) and proyectos>=1:
             print("Beca Completa")
-        if ((promedio<4.5) and proyectos>=1) or ((promedio>=4.5 and promedio<=5) and proyectos==0):
+        elif ((promedio<4.5) and proyectos>=0) and ((promedio>=4.5 and promedio<=5) and proyectos==0):
             print("No aplica beca")
-        """ if :
-            print("No aplica beca b") """
+        while True:
+            try:
+                opciones=int(input("¿Desea continuar? (1) Sí / (2) No: "))
+                if opciones<1 or opciones>2:
+                    raise ValueError
+                break
+            except ValueError:
+                print("Las opciones deben ser 1 o 2.")
+        if opciones!=1:
+            break
         
         
     

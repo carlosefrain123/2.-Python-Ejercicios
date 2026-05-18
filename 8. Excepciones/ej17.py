@@ -14,37 +14,37 @@ Calcular el descuento correspondiente según la edad.
 Mostrar un resumen con la edad, el valor base, el descuento aplicado y el total a pagar.
 Manejar excepciones en caso de que el usuario ingrese valores no válidos.
 Mostrar siempre un mensaje de finalización al terminar, sin importar si hubo error o no. """
-
 while True:
     try:
-        edad=int(input("Ingrese su edad: "))
-        if edad<0 or edad>120:
-            print("La edad no tiene que ser menor a 0 y mayor a 120 años.")
+        edad=int(input("Ingrese la edad: "))
+        if edad<1 or edad>120:
+            print("La edad tiene que estar entar entre 1 a 120 años")
             continue
-        mensualidad=int(input("Ingrese el valor de mensualidad: "))
+        mensualidad=int(input("Ingrese la mensualidad: "))
         if mensualidad<0:
-            print("La mensualidad no tiene que ser menor a 0.")
+            print("La mensualidad no tiene que ser negativo.")
             continue
     except ValueError:
-        print("Lo valores tienen que ser número, no cadenas.")
+        print("Tiene que ser número, no cadena de texto.")
     except Exception as e:
-        print("Error...")
         print(f"Detalle: {e}")
     else:
         descuento=0
         if edad>=18 and edad<=65:
             descuento=0.25
-        total=mensualidad-(mensualidad*0.25)
-        print(f"****Edad: {edad}")
-        print(f"***Mensualidad: S/{mensualidad}")
-        print(f"**Descuento: {descuento}%")
-        print(f"*Total: S/{total}")
-        
-        opciones=int(input("¿Desea continuar? (1) Sí (2) No: "))
-        if opciones<1 or opciones>2:
-            print("Las opciones deben ser 1 o 2")
+        total=mensualidad-(mensualidad*descuento)
+        print(f"Edad: {edad} años")
+        print(f"Descuento: {descuento*100}%")
+        print(f"Total: {total}")
+        while True:
+            try:
+                opciones=int(input("¿Desea continuar? (1) Sí / (2) No: "))
+                if opciones<1 or opciones>2:
+                    raise ValueError
+                break
+            except ValueError:
+                print("Las opciones tienen que ser 1 o 2.")
+        if opciones!=1:
             break
-        if opciones==1:
-            continue
-        else:
-            break
+    finally:
+        print("Ejecución Terminada.")

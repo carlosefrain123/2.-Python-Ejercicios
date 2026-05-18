@@ -1,5 +1,6 @@
 """ Ejercicio: Calculadora de Peaje
-Desarrollar un programa en Python que calcule el costo del peaje según el tipo de vehículo. En una autopista, la tarifa varía de la siguiente manera:
+Desarrollar un programa en Python que calcule el costo del peaje según el tipo de vehículo. En una autopista, 
+la tarifa varía de la siguiente manera:
 
 Motocicletas: $1.50
 Automóviles: $3.00
@@ -20,28 +21,38 @@ Si el tipo de vehículo ingresado no corresponde a ninguna categoría, mostrar u
 El costo de los camiones/buses se multiplica por el número de ejes. """
 while True:
     try:
-        num_ejes=int(input("***Ingrese el número de ejes de su vehículo: "))
-        if num_ejes<0: 
-            print("====El número de ejes no tiene que ser negativo====") 
+        num_ejes=int(input("Ingrese el número de ejes: "))
+        if num_ejes<0:
+            print("No tiene que ser negativo")
             continue
-        tip_vehiculo=int(input("\n**Ingrese el tipo de vehículo: (1. Motocicleta / 2. Automóvil / 3. Camión)"))
-        if tip_vehiculo<1 or tip_vehiculo>3: 
-            print("====Las opciones tienen que ser 1, 2 u 3====")
+        tip_vehi=int(input("Ingrese el tipo de vehículo ((1) Motocicleta / (2) Automóvil / (3) Camión)."))
+        if tip_vehi<0 or tip_vehi>3:
+            print("Tiene que se de 1 a 3 las opciones.")
             continue
     except ValueError:
-        print("Error... Deben ser número, no cadenas de textos")
+        print("Tienen que ser números, no cadenas de textos.")
     except Exception as e:
-        print("Error...")
         print(f"Detalle: {e}")
     else:
-        if tip_vehiculo==1:
+        tarifa=0
+        if tip_vehi==1:
             tarifa=1.50
-        if tip_vehiculo==2:
+        elif tarifa==2:
             tarifa=3.00
-        if tip_vehiculo==3:
+        else:
             tarifa=5.00*num_ejes
-        print(f"Número de ejes: {num_ejes}")
-        print(f"Tipo de vehículo: {tip_vehiculo}")
         print(f"La tarifa es: {tarifa}")
+        
+        while True:
+            try:
+                opciones=int(input("¿Desea continuar? (1) Sí / (2) No: "))
+                if opciones<1 or opciones>2:
+                    raise ValueError
+                break
+            except ValueError:
+                print("Las opciones tienen que ser 1 o 2")
+        if opciones!=1:
+            break
     finally:
-        print("Ejecución Terminada,")
+        print("Ejecución Terminada.")
+    

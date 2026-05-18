@@ -24,8 +24,7 @@ Usar la estructura try / except / else / finally.
 Si el dispositivo ingresado no corresponde a ninguna categoría, mostrar un mensaje de 
 dispositivo no reconocido. 
 Los puntos se dividen a la mitad si el dispositivo no funciona, sin importar el tipo. """
-
-puntos_general=0
+aco_pts=0
 while True:
     try:
         dispositivo=int(input("Ingrese el dispositivo a reciclar ((1) Celular / (2) Laptop / (3) Tablet): "))
@@ -44,25 +43,28 @@ while True:
     else:
         if dispositivo==1 and funcionamiento==1:
             puntos=10
-        if dispositivo==1 and funcionamiento==2:
+        elif dispositivo==1 and funcionamiento==2:
             puntos=5
-        if dispositivo==2 and funcionamiento==1:
-            puntos=25    
-        if dispositivo==2 and funcionamiento==2:
+        elif dispositivo==2 and funcionamiento==1:
+            puntos=25
+        elif dispositivo==2 and funcionamiento==2:
             puntos=12.5
-        if dispositivo==3 and funcionamiento==1:
-            puntos=15    
-        if dispositivo==3 and funcionamiento==2:
+        elif dispositivo==3 and funcionamiento==1:
+            puntos=15
+        elif dispositivo==3 and funcionamiento==2:
             puntos=7.5
-        puntos_general+=puntos
-        print(f"Puntos: {puntos}")
-        print(f"Puntos Acomulados: {puntos_general}")
-        
-        opciones=int(input("¿Desea continuar? (1) Si / (2) No): "))
-        if opciones<1 or opciones>2:
-            print("Las opciones tienen que se 1 o 2")
+        aco_pts+=puntos
+        print(f"Puntos: {puntos} puntos")
+        print(f"Acomulación de puntos: {aco_pts}")
+        while True:
+            try:
+                opciones=int(input("¿Desea continuar? (1) Sí / (2) No: "))
+                if  opciones<1 or opciones>2:
+                    raise ValueError
+                break
+            except ValueError:
+                print("Las opciones tienen que ser 1 o 2.")
+        if opciones!=1:
             break
-        if opciones==1:
-            continue
-        else:
-            break
+    finally:
+        print("Ejecución Terminada.")
